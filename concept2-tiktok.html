@@ -1,0 +1,1709 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Amazing Reels - TikTok Style</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --color-pink: #ec4899;
+        --color-purple: #a855f7;
+        --color-blue: #8b5cf6;
+        --color-rose: #f472b6;
+        --color-lavender: #c4b5fd;
+        --color-gradient-1: linear-gradient(
+          135deg,
+          #ec4899 0%,
+          #a855f7 50%,
+          #8b5cf6 100%
+        );
+        --color-gradient-2: linear-gradient(
+          180deg,
+          #fdf2f8 0%,
+          #faf5ff 50%,
+          #f3e8ff 100%
+        );
+        --color-bg: #fef7ff;
+        --color-text: #1f2937;
+        --color-text-light: #6b7280;
+        --spacing-xs: 0.5rem;
+        --spacing-sm: 1rem;
+        --spacing-md: 1.5rem;
+        --spacing-lg: 2.5rem;
+        --spacing-xl: 4rem;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        line-height: 1.7;
+        color: var(--color-text);
+        background: var(--color-gradient-2);
+        font-size: 16px;
+        font-weight: 400;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      .container {
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0 var(--spacing-sm);
+      }
+
+      /* Navbar */
+      .navbar {
+        padding: var(--spacing-sm) var(--spacing-sm);
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(236, 72, 153, 0.15);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 10px rgba(236, 72, 153, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transform: translateY(0);
+      }
+
+      .navbar.hidden {
+        transform: translateY(-100%);
+      }
+
+      .navbar .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-family: "Poppins", sans-serif;
+        font-size: 1.5rem;
+        font-weight: 800;
+        background: var(--color-gradient-1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-decoration: none;
+        letter-spacing: -0.02em;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .logo svg {
+        width: 36px;
+        height: 36px;
+        flex-shrink: 0;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: var(--spacing-md);
+        align-items: center;
+      }
+
+      .nav-link {
+        color: var(--color-text);
+        text-decoration: none;
+        font-size: 0.9375rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        position: relative;
+        white-space: nowrap;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--color-gradient-1);
+        transition: width 0.3s ease;
+      }
+
+      .nav-link:hover {
+        color: var(--color-pink);
+      }
+
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      .menu-toggle {
+        display: none;
+      }
+
+      .menu-icon {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 4px;
+        padding: 0.5rem;
+        position: relative;
+        z-index: 101;
+      }
+
+      .menu-icon span {
+        width: 24px;
+        height: 2px;
+        background: var(--color-pink);
+        transition: all 0.3s ease;
+        border-radius: 2px;
+        display: block;
+      }
+
+      .menu-close {
+        display: none;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        width: 32px;
+        height: 32px;
+        cursor: pointer;
+        z-index: 102;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: transparent;
+        transition: background 0.3s ease;
+      }
+
+      .menu-close:hover {
+        background: rgba(236, 72, 153, 0.1);
+      }
+
+      .menu-close svg {
+        width: 20px;
+        height: 20px;
+        stroke: var(--color-pink);
+        stroke-width: 2.5;
+      }
+
+      .switch-concept {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.625rem 1.25rem;
+        background: white;
+        color: var(--color-pink);
+        text-decoration: none;
+        font-size: 0.875rem;
+        font-weight: 700;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        border: 2px solid var(--color-pink);
+      }
+
+      .switch-concept:hover {
+        transform: translateY(-2px);
+        border-color: var(--color-purple);
+        color: var(--color-purple);
+      }
+
+      .switch-concept svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      /* Hero Section */
+      .hero {
+        padding: calc(var(--spacing-xl) + 2rem) var(--spacing-sm)
+          var(--spacing-lg);
+        text-align: left;
+        background: var(--color-gradient-1);
+        color: white;
+        position: relative;
+        overflow: hidden;
+        min-height: 85vh;
+        display: flex;
+        align-items: center;
+      }
+
+      .hero .container {
+        position: relative;
+        overflow: visible;
+        z-index: 2;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: -30%;
+        right: -10%;
+        width: 150%;
+        height: 150%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.15) 0%,
+          transparent 65%
+        );
+        animation: pulse 6s ease-in-out infinite;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        bottom: -20%;
+        left: -15%;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.1) 0%,
+          transparent 70%
+        );
+        border-radius: 50%;
+        animation: float 8s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 0.4;
+        }
+        50% {
+          transform: scale(1.05);
+          opacity: 0.6;
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+        50% {
+          transform: translate(30px, -30px) scale(1.1);
+        }
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 600px;
+      }
+
+      .hero-illustration {
+        position: absolute;
+        right: 5%;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 220px;
+        height: 220px;
+        opacity: 0.5;
+        z-index: 0;
+        display: block;
+        animation: float 8s ease-in-out infinite;
+      }
+
+      .hero-illustration svg {
+        width: 100%;
+        height: 100%;
+        filter: drop-shadow(0 4px 20px rgba(255, 255, 255, 0.2));
+      }
+
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.625rem 1.25rem;
+        background: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50px;
+        font-size: 0.875rem;
+        color: white;
+        font-weight: 600;
+        margin-bottom: var(--spacing-md);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .hero h1 {
+        font-family: "Poppins", sans-serif;
+        font-size: 3.25rem;
+        font-weight: 800;
+        margin-bottom: var(--spacing-md);
+        line-height: 1.2;
+        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        letter-spacing: -0.03em;
+      }
+
+      .hero h1 .highlight {
+        position: relative;
+        display: inline-block;
+      }
+
+      .hero h1 .highlight::after {
+        content: "";
+        position: absolute;
+        bottom: 0.15em;
+        left: 0;
+        right: 0;
+        height: 0.25em;
+        background: rgba(255, 255, 255, 0.3);
+        z-index: -1;
+        border-radius: 2px;
+        transform: skewX(-12deg);
+      }
+
+      .hero p {
+        font-size: 1.25rem;
+        margin-bottom: var(--spacing-lg);
+        opacity: 0.95;
+        font-weight: 300;
+        letter-spacing: 0.01em;
+        line-height: 1.7;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 1.125rem 2.75rem;
+        font-size: 1rem;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 50px;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        border: none;
+        cursor: pointer;
+        font-family: "Poppins", sans-serif;
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+        letter-spacing: 0.02em;
+      }
+
+      .btn-primary {
+        background-color: white;
+        color: var(--color-pink);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 0 10px 32px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Features Section */
+      .features {
+        padding: var(--spacing-xl) var(--spacing-sm);
+        background-color: var(--color-bg);
+        position: relative;
+      }
+
+      .features::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: var(--color-gradient-1);
+        opacity: 0.3;
+      }
+
+      .section-title {
+        font-family: "Poppins", sans-serif;
+        font-size: 2.75rem;
+        font-weight: 800;
+        text-align: center;
+        margin-bottom: var(--spacing-lg);
+        background: var(--color-gradient-1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        letter-spacing: -0.02em;
+        position: relative;
+        display: inline-block;
+        width: 100%;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -0.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: var(--color-gradient-1);
+        border-radius: 2px;
+      }
+
+      .features-grid {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+      }
+
+      .feature-card {
+        background: white;
+        padding: var(--spacing-md);
+        border-radius: 24px;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 1px solid #e5e7eb;
+        backdrop-filter: blur(10px);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .feature-illustration {
+        position: absolute;
+        bottom: -15px;
+        right: -15px;
+        width: 120px;
+        height: 120px;
+        opacity: 0.15;
+        pointer-events: none;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+      }
+
+      .feature-card:hover .feature-illustration {
+        opacity: 0.25;
+        transform: scale(1.1) rotate(5deg);
+      }
+
+      .feature-illustration svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      .feature-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: var(--color-gradient-1);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-8px) scale(1.02);
+        border-color: rgba(236, 72, 153, 0.4);
+        box-shadow: 0 16px 40px rgba(236, 72, 153, 0.2);
+      }
+
+      .feature-card:hover::before {
+        opacity: 1;
+      }
+
+      .feature-icon {
+        width: 56px;
+        height: 56px;
+        margin-bottom: var(--spacing-sm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--color-pink);
+        animation: float 3s ease-in-out infinite;
+        filter: drop-shadow(0 2px 8px rgba(236, 72, 153, 0.2));
+      }
+
+      .feature-icon svg {
+        width: 100%;
+        height: 100%;
+        stroke-width: 1.5;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+      }
+
+      .feature-card:nth-child(2) .feature-icon {
+        animation-delay: 0.2s;
+      }
+
+      .feature-card:nth-child(3) .feature-icon {
+        animation-delay: 0.4s;
+      }
+
+      .feature-card:nth-child(4) .feature-icon {
+        animation-delay: 0.6s;
+      }
+
+      .feature-card:nth-child(5) .feature-icon {
+        animation-delay: 0.8s;
+      }
+
+      .feature-card:nth-child(6) .feature-icon {
+        animation-delay: 1s;
+      }
+
+      .feature-number {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        width: 36px;
+        height: 36px;
+        background: var(--color-gradient-1);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.875rem;
+        font-weight: 800;
+        opacity: 0;
+        transform: scale(0.8) rotate(-10deg);
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);
+      }
+
+      .feature-card:hover .feature-number {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+      }
+
+      .feature-card h3 {
+        font-family: "Poppins", sans-serif;
+        font-size: 1.375rem;
+        font-weight: 700;
+        color: var(--color-text);
+        margin-bottom: var(--spacing-xs);
+        letter-spacing: -0.01em;
+      }
+
+      .feature-card p {
+        color: var(--color-text-light);
+        font-size: 0.9375rem;
+        line-height: 1.7;
+        font-weight: 300;
+      }
+
+      /* Testimonials Section */
+      .testimonials {
+        padding: var(--spacing-xl) var(--spacing-sm);
+        background: var(--color-gradient-2);
+        position: relative;
+      }
+
+      .testimonials::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: var(--color-gradient-1);
+        opacity: 0.3;
+      }
+
+      .testimonials-grid {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+      }
+
+      .testimonial-card {
+        background: white;
+        padding: var(--spacing-md);
+        border-radius: 28px;
+        border: 1px solid #e5e7eb;
+        position: relative;
+        transition: all 0.3s ease;
+        overflow: hidden;
+      }
+
+      .testimonial-card::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(236, 72, 153, 0.05) 0%,
+          transparent 70%
+        );
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .testimonial-card:hover::after {
+        opacity: 1;
+      }
+
+      .testimonial-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background: var(--color-gradient-1);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .testimonial-card:hover {
+        transform: translateY(-3px);
+        border-color: rgba(168, 85, 247, 0.4);
+        box-shadow: 0 8px 32px rgba(168, 85, 247, 0.15);
+      }
+
+      .testimonial-card:hover::before {
+        opacity: 1;
+      }
+
+      .testimonial-header {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        margin-bottom: var(--spacing-sm);
+      }
+
+      .testimonial-avatar {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background: var(--color-gradient-1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 700;
+        font-size: 1.25rem;
+        flex-shrink: 0;
+        box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
+      }
+
+      .testimonial-info {
+        flex: 1;
+      }
+
+      .testimonial-author {
+        font-size: 0.9375rem;
+        color: var(--color-text);
+        font-weight: 700;
+        font-family: "Poppins", sans-serif;
+        letter-spacing: 0.02em;
+        margin-bottom: 0.25rem;
+      }
+
+      .testimonial-age {
+        font-size: 0.8125rem;
+        color: var(--color-text-light);
+        font-weight: 400;
+      }
+
+      .testimonial-text {
+        font-size: 1rem;
+        color: var(--color-text);
+        line-height: 1.7;
+        font-weight: 300;
+        position: relative;
+        padding-left: var(--spacing-sm);
+      }
+
+      .testimonial-text::before {
+        content: '"';
+        position: absolute;
+        left: -4px;
+        top: -10px;
+        font-size: 3.5rem;
+        background: var(--color-gradient-1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        opacity: 0.2;
+        font-family: "Poppins", sans-serif;
+        font-weight: 800;
+        line-height: 1;
+      }
+
+      /* CTA Section */
+      .cta {
+        padding: calc(var(--spacing-xl) + 2rem) var(--spacing-sm);
+        text-align: center;
+        background: var(--color-gradient-1);
+        color: white;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cta::before {
+        content: "";
+        position: absolute;
+        top: -30%;
+        left: -10%;
+        width: 150%;
+        height: 150%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.15) 0%,
+          transparent 65%
+        );
+        animation: pulse 6s ease-in-out infinite;
+      }
+
+      .cta::after {
+        content: "";
+        position: absolute;
+        bottom: -20%;
+        right: -15%;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.1) 0%,
+          transparent 70%
+        );
+        border-radius: 50%;
+        animation: float 8s ease-in-out infinite;
+      }
+
+      .cta-content {
+        position: relative;
+        z-index: 1;
+      }
+
+      .cta h2 {
+        font-family: "Poppins", sans-serif;
+        font-size: 2.75rem;
+        font-weight: 800;
+        margin-bottom: var(--spacing-sm);
+        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        letter-spacing: -0.02em;
+        position: relative;
+        display: inline-block;
+      }
+
+      .cta h2::after {
+        content: "";
+        position: absolute;
+        bottom: 0.15em;
+        left: 0;
+        right: 0;
+        height: 0.2em;
+        background: rgba(255, 255, 255, 0.3);
+        z-index: -1;
+        border-radius: 2px;
+        transform: skewX(-12deg);
+      }
+
+      .cta p {
+        font-size: 1.125rem;
+        margin-bottom: var(--spacing-md);
+        opacity: 0.98;
+        font-weight: 300;
+      }
+
+      .btn-secondary {
+        background-color: white;
+        color: var(--color-pink);
+      }
+
+      .btn-secondary:hover {
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 0 10px 32px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Footer */
+      .footer {
+        padding: var(--spacing-md) var(--spacing-sm);
+        text-align: center;
+        background-color: white;
+        border-top: 1px solid rgba(236, 72, 153, 0.1);
+      }
+
+      .footer p {
+        font-size: 0.875rem;
+        color: var(--color-text-light);
+        font-weight: 300;
+      }
+
+      /* Mobile Responsive */
+      @media (max-width: 767px) {
+        .logo {
+          font-size: 1.25rem;
+        }
+
+        .logo svg {
+          width: 30px;
+          height: 30px;
+        }
+
+        .menu-icon {
+          display: flex;
+        }
+
+        .nav-links {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 280px;
+          height: 100vh;
+          background: rgba(255, 255, 255, 0.98);
+          backdrop-filter: blur(20px);
+          flex-direction: column;
+          align-items: stretch;
+          padding: 4rem var(--spacing-md) var(--spacing-md);
+          gap: 0.5rem;
+          box-shadow: -4px 0 20px rgba(236, 72, 153, 0.15);
+          transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          z-index: 102;
+          overflow-y: auto;
+        }
+
+        .menu-toggle:checked ~ .nav-links {
+          right: 0;
+        }
+
+        .menu-toggle:checked ~ .nav-links .menu-close {
+          display: flex;
+        }
+
+        .menu-toggle:checked ~ .menu-icon {
+          display: none;
+        }
+
+        .menu-overlay {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          width: 100vw;
+          height: 100vh;
+          background: rgba(0, 0, 0, 0.4);
+          z-index: 101;
+          cursor: pointer;
+          pointer-events: none;
+        }
+
+        .menu-toggle:checked ~ .menu-overlay {
+          display: block;
+          pointer-events: all;
+        }
+
+        .nav-link {
+          padding: 0.875rem 1rem;
+          border-radius: 8px;
+          display: block;
+          text-align: left;
+          color: var(--color-text);
+        }
+
+        .nav-link::after {
+          display: none;
+        }
+
+        .nav-link:hover {
+          background: rgba(236, 72, 153, 0.05);
+          color: var(--color-pink);
+        }
+
+        .nav-link:active,
+        .switch-concept:active {
+          background: rgba(236, 72, 153, 0.1);
+        }
+
+        .switch-concept {
+          width: 100%;
+          justify-content: center;
+          margin-top: 0.5rem;
+        }
+      }
+
+      /* Responsive */
+      @media (min-width: 768px) {
+        .container {
+          max-width: 720px;
+          padding: 0 var(--spacing-md);
+        }
+
+        .navbar {
+          padding: var(--spacing-sm) var(--spacing-md);
+        }
+
+        .logo {
+          font-size: 1.75rem;
+        }
+
+        .hero h1 {
+          font-size: 3.25rem;
+        }
+
+        .section-title {
+          font-size: 2.75rem;
+        }
+
+        .features-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: var(--spacing-md);
+        }
+
+        .hero-illustration {
+          right: 2%;
+          width: 340px;
+          height: 340px;
+          opacity: 0.55;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .container {
+          max-width: 960px;
+        }
+
+        .hero h1 {
+          font-size: 4rem;
+        }
+
+        .hero-illustration {
+          width: 420px;
+          height: 420px;
+          right: 3%;
+          opacity: 0.6;
+        }
+
+        .cta h2 {
+          font-size: 2.75rem;
+        }
+
+        .features-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .testimonials-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="container">
+        <a href="#" class="logo">
+          <svg
+            viewBox="0 0 40 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect width="40" height="40" rx="10" fill="url(#gradient2)" />
+            <path
+              d="M12 16C12 14.8954 12.8954 14 14 14H18C19.1046 14 20 14.8954 20 16V20C20 21.1046 20.8954 22 22 22H26C27.1046 22 28 22.8954 28 24V28C28 29.1046 27.1046 30 26 30H14C12.8954 30 12 29.1046 12 28V16Z"
+              fill="white"
+              opacity="0.95"
+            />
+            <circle cx="28" cy="12" r="4" fill="white" opacity="0.9" />
+            <path
+              d="M16 26L20 22L24 26"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              opacity="0.8"
+            />
+            <defs>
+              <linearGradient
+                id="gradient2"
+                x1="0"
+                y1="0"
+                x2="40"
+                y2="40"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stop-color="#ec4899" />
+                <stop offset="0.5" stop-color="#a855f7" />
+                <stop offset="1" stop-color="#8b5cf6" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <span>ReelCreator</span>
+        </a>
+        <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+        <label for="menu-toggle" class="menu-overlay"></label>
+        <label for="menu-toggle" class="menu-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+        <div class="nav-links">
+          <label for="menu-toggle" class="menu-close">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M18 6L6 18M6 6L18 18"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </label>
+          <a href="#features" class="nav-link">Features</a>
+          <a href="#testimonials" class="nav-link">Reviews</a>
+          <a href="#cta" class="nav-link">Get Started</a>
+          <a href="concept1-minimalist.html" class="switch-concept">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7 16L3 12M3 12L7 8M3 12H21M17 8L21 12M21 12L17 16"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <span>View Concept 1</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-illustration">
+        <svg
+          viewBox="0 0 200 200"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle
+            cx="100"
+            cy="100"
+            r="85"
+            stroke="url(#gradient-pink)"
+            stroke-width="2.5"
+            opacity="0.6"
+          />
+          <rect
+            x="60"
+            y="60"
+            width="80"
+            height="80"
+            rx="12"
+            stroke="url(#gradient-pink)"
+            stroke-width="2.5"
+            opacity="0.6"
+            transform="rotate(15 100 100)"
+          />
+          <circle
+            cx="100"
+            cy="100"
+            r="50"
+            fill="url(#gradient-pink)"
+            opacity="0.25"
+          />
+          <path
+            d="M80 100L95 85L110 100L105 120L85 120Z"
+            fill="url(#gradient-pink)"
+            opacity="0.4"
+          />
+          <circle
+            cx="70"
+            cy="70"
+            r="8"
+            fill="url(#gradient-pink)"
+            opacity="0.5"
+          />
+          <circle
+            cx="130"
+            cy="70"
+            r="8"
+            fill="url(#gradient-pink)"
+            opacity="0.5"
+          />
+          <circle
+            cx="70"
+            cy="130"
+            r="8"
+            fill="url(#gradient-pink)"
+            opacity="0.5"
+          />
+          <circle
+            cx="130"
+            cy="130"
+            r="8"
+            fill="url(#gradient-pink)"
+            opacity="0.5"
+          />
+          <defs>
+            <linearGradient id="gradient-pink" x1="0" y1="0" x2="200" y2="200">
+              <stop stop-color="#ec4899" />
+              <stop offset="0.5" stop-color="#a855f7" />
+              <stop offset="1" stop-color="#8b5cf6" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <i data-lucide="sparkles" style="width: 16px; height: 16px"></i>
+            <span>Trusted by 10,000+ creators</span>
+          </div>
+          <h1>
+            Create <span class="highlight">Amazing</span><br />
+            Reels That Stand Out
+          </h1>
+          <p>
+            Join thousands of creators who are taking their content to the next
+            level with our platform designed specifically for Reels and TikTok
+            creators.
+          </p>
+          <a href="#cta" class="btn btn-primary">Get Started Free</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+      <div class="container">
+        <h2 class="section-title">Everything You Need to Succeed</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-illustration">
+              <svg
+                viewBox="0 0 120 120"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                  x="25"
+                  y="30"
+                  width="70"
+                  height="60"
+                  rx="8"
+                  stroke="url(#grad-feat1)"
+                  stroke-width="2.5"
+                  opacity="0.4"
+                />
+                <circle
+                  cx="60"
+                  cy="60"
+                  r="12"
+                  fill="url(#grad-feat1)"
+                  opacity="0.3"
+                />
+                <path
+                  d="M45 60L55 50L55 70Z"
+                  fill="url(#grad-feat1)"
+                  opacity="0.4"
+                />
+                <defs>
+                  <linearGradient
+                    id="grad-feat1"
+                    x1="0"
+                    y1="0"
+                    x2="120"
+                    y2="120"
+                  >
+                    <stop stop-color="#ec4899" />
+                    <stop offset="1" stop-color="#a855f7" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <div class="feature-number">01</div>
+            <div class="feature-icon">
+              <i data-lucide="video"></i>
+            </div>
+            <h3>Easy Editing</h3>
+            <p>
+              Create professional-looking content with our intuitive editing
+              tools. No experience needed.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-illustration">
+              <svg
+                viewBox="0 0 120 120"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M25 85L40 60L55 70L70 45L95 65"
+                  stroke="url(#grad-feat2)"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  opacity="0.4"
+                />
+                <circle
+                  cx="40"
+                  cy="60"
+                  r="4"
+                  fill="url(#grad-feat2)"
+                  opacity="0.4"
+                />
+                <circle
+                  cx="55"
+                  cy="70"
+                  r="4"
+                  fill="url(#grad-feat2)"
+                  opacity="0.4"
+                />
+                <circle
+                  cx="70"
+                  cy="45"
+                  r="4"
+                  fill="url(#grad-feat2)"
+                  opacity="0.4"
+                />
+                <defs>
+                  <linearGradient
+                    id="grad-feat2"
+                    x1="0"
+                    y1="0"
+                    x2="120"
+                    y2="120"
+                  >
+                    <stop stop-color="#ec4899" />
+                    <stop offset="1" stop-color="#8b5cf6" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <div class="feature-number">02</div>
+            <div class="feature-icon">
+              <i data-lucide="trending-up"></i>
+            </div>
+            <h3>Track Performance</h3>
+            <p>
+              Monitor your views, engagement, and growth with detailed analytics
+              and insights.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-illustration">
+              <svg
+                viewBox="0 0 120 120"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  cx="35"
+                  cy="45"
+                  r="6"
+                  fill="url(#grad-feat3)"
+                  opacity="0.4"
+                />
+                <circle
+                  cx="60"
+                  cy="35"
+                  r="7"
+                  fill="url(#grad-feat3)"
+                  opacity="0.4"
+                />
+                <circle
+                  cx="85"
+                  cy="50"
+                  r="6"
+                  fill="url(#grad-feat3)"
+                  opacity="0.4"
+                />
+                <circle
+                  cx="45"
+                  cy="75"
+                  r="5"
+                  fill="url(#grad-feat3)"
+                  opacity="0.4"
+                />
+                <circle
+                  cx="75"
+                  cy="80"
+                  r="6"
+                  fill="url(#grad-feat3)"
+                  opacity="0.4"
+                />
+                <path
+                  d="M30 45L60 35L85 50"
+                  stroke="url(#grad-feat3)"
+                  stroke-width="2"
+                  opacity="0.3"
+                  stroke-dasharray="3 3"
+                />
+                <defs>
+                  <linearGradient
+                    id="grad-feat3"
+                    x1="0"
+                    y1="0"
+                    x2="120"
+                    y2="120"
+                  >
+                    <stop stop-color="#a855f7" />
+                    <stop offset="1" stop-color="#ec4899" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <div class="feature-number">03</div>
+            <div class="feature-icon">
+              <i data-lucide="sparkles"></i>
+            </div>
+            <h3>Trending Effects</h3>
+            <p>
+              Access the latest filters, effects, and templates to keep your
+              content fresh and engaging.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-illustration">
+              <svg
+                viewBox="0 0 120 120"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  cx="40"
+                  cy="45"
+                  r="15"
+                  stroke="url(#grad-feat4)"
+                  stroke-width="2.5"
+                  opacity="0.4"
+                />
+                <circle
+                  cx="80"
+                  cy="45"
+                  r="15"
+                  stroke="url(#grad-feat4)"
+                  stroke-width="2.5"
+                  opacity="0.4"
+                />
+                <path
+                  d="M30 75Q40 85 60 85Q80 85 90 75"
+                  stroke="url(#grad-feat4)"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  opacity="0.4"
+                />
+                <circle
+                  cx="40"
+                  cy="45"
+                  r="5"
+                  fill="url(#grad-feat4)"
+                  opacity="0.3"
+                />
+                <circle
+                  cx="80"
+                  cy="45"
+                  r="5"
+                  fill="url(#grad-feat4)"
+                  opacity="0.3"
+                />
+                <defs>
+                  <linearGradient
+                    id="grad-feat4"
+                    x1="0"
+                    y1="0"
+                    x2="120"
+                    y2="120"
+                  >
+                    <stop stop-color="#ec4899" />
+                    <stop offset="1" stop-color="#a855f7" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <div class="feature-number">04</div>
+            <div class="feature-icon">
+              <i data-lucide="users"></i>
+            </div>
+            <h3>Community Support</h3>
+            <p>
+              Connect with other creators, share tips, and grow together in our
+              supportive community.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-illustration">
+              <svg
+                viewBox="0 0 120 120"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                  x="35"
+                  y="35"
+                  width="50"
+                  height="50"
+                  rx="6"
+                  stroke="url(#grad-feat5)"
+                  stroke-width="2.5"
+                  opacity="0.4"
+                />
+                <circle
+                  cx="50"
+                  cy="50"
+                  r="4"
+                  fill="url(#grad-feat5)"
+                  opacity="0.4"
+                />
+                <circle
+                  cx="60"
+                  cy="50"
+                  r="4"
+                  fill="url(#grad-feat5)"
+                  opacity="0.4"
+                />
+                <circle
+                  cx="70"
+                  cy="50"
+                  r="4"
+                  fill="url(#grad-feat5)"
+                  opacity="0.4"
+                />
+                <rect
+                  x="40"
+                  y="65"
+                  width="40"
+                  height="15"
+                  rx="3"
+                  fill="url(#grad-feat5)"
+                  opacity="0.25"
+                />
+                <path
+                  d="M35 35L45 25M85 35L95 25M35 85L45 95M85 85L95 95"
+                  stroke="url(#grad-feat5)"
+                  stroke-width="2"
+                  opacity="0.3"
+                />
+                <defs>
+                  <linearGradient
+                    id="grad-feat5"
+                    x1="0"
+                    y1="0"
+                    x2="120"
+                    y2="120"
+                  >
+                    <stop stop-color="#a855f7" />
+                    <stop offset="1" stop-color="#ec4899" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <div class="feature-number">05</div>
+            <div class="feature-icon">
+              <i data-lucide="palette"></i>
+            </div>
+            <h3>Custom Branding</h3>
+            <p>
+              Add your personal touch with custom colors, fonts, and branding
+              elements.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-illustration">
+              <svg
+                viewBox="0 0 120 120"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M35 60L60 35L85 60L60 85Z"
+                  stroke="url(#grad-feat6)"
+                  stroke-width="3"
+                  opacity="0.4"
+                />
+                <circle
+                  cx="60"
+                  cy="60"
+                  r="10"
+                  fill="url(#grad-feat6)"
+                  opacity="0.3"
+                />
+                <path
+                  d="M60 35L60 20M60 85L60 100M35 60L20 60M85 60L100 60"
+                  stroke="url(#grad-feat6)"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  opacity="0.4"
+                />
+                <circle
+                  cx="60"
+                  cy="20"
+                  r="4"
+                  fill="url(#grad-feat6)"
+                  opacity="0.4"
+                />
+                <circle
+                  cx="100"
+                  cy="60"
+                  r="4"
+                  fill="url(#grad-feat6)"
+                  opacity="0.4"
+                />
+                <circle
+                  cx="60"
+                  cy="100"
+                  r="4"
+                  fill="url(#grad-feat6)"
+                  opacity="0.4"
+                />
+                <circle
+                  cx="20"
+                  cy="60"
+                  r="4"
+                  fill="url(#grad-feat6)"
+                  opacity="0.4"
+                />
+                <defs>
+                  <linearGradient
+                    id="grad-feat6"
+                    x1="0"
+                    y1="0"
+                    x2="120"
+                    y2="120"
+                  >
+                    <stop stop-color="#ec4899" />
+                    <stop offset="0.5" stop-color="#a855f7" />
+                    <stop offset="1" stop-color="#8b5cf6" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <div class="feature-number">06</div>
+            <div class="feature-icon">
+              <i data-lucide="zap"></i>
+            </div>
+            <h3>Fast Publishing</h3>
+            <p>
+              Schedule and publish your content across multiple platforms with
+              just one click.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+      <div class="container">
+        <h2 class="section-title">What Creators Are Saying</h2>
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="testimonial-avatar">S</div>
+              <div class="testimonial-info">
+                <div class="testimonial-author">Sarah</div>
+                <div class="testimonial-age">20 years old</div>
+              </div>
+            </div>
+            <p class="testimonial-text">
+              This platform completely changed how I create content. My
+              engagement has tripled since I started using it!
+            </p>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="testimonial-avatar">E</div>
+              <div class="testimonial-info">
+                <div class="testimonial-author">Emma</div>
+                <div class="testimonial-age">21 years old</div>
+              </div>
+            </div>
+            <p class="testimonial-text">
+              I love how easy it is to use. Even as a beginner, I was able to
+              create professional-looking reels right away.
+            </p>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="testimonial-avatar">M</div>
+              <div class="testimonial-info">
+                <div class="testimonial-author">Mia</div>
+                <div class="testimonial-age">19 years old</div>
+              </div>
+            </div>
+            <p class="testimonial-text">
+              The analytics feature is amazing. I can finally understand what
+              works and what doesn't for my audience.
+            </p>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="testimonial-avatar">O</div>
+              <div class="testimonial-info">
+                <div class="testimonial-author">Olivia</div>
+                <div class="testimonial-age">22 years old</div>
+              </div>
+            </div>
+            <p class="testimonial-text">
+              Best investment I've made for my content creation. The community
+              here is so supportive and helpful.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="cta">
+      <div class="container">
+        <div class="cta-content">
+          <h2>Ready to Grow Your Audience?</h2>
+          <p>
+            Start creating amazing content today. Join thousands of successful
+            creators.
+          </p>
+          <a href="#" class="btn btn-secondary">Start Free Trial</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2024 Reel Creator Platform. All rights reserved.</p>
+      </div>
+    </footer>
+    <script>
+      lucide.createIcons();
+
+      // Navbar scroll animation
+      let lastScroll = 0;
+      const navbar = document.querySelector(".navbar");
+
+      window.addEventListener("scroll", () => {
+        const currentScroll = window.pageYOffset;
+
+        if (currentScroll <= 0) {
+          navbar.classList.remove("hidden");
+          return;
+        }
+
+        if (currentScroll > lastScroll && currentScroll > 100) {
+          // Scrolling down - hide navbar
+          navbar.classList.add("hidden");
+        } else {
+          // Scrolling up - show navbar
+          navbar.classList.remove("hidden");
+        }
+
+        lastScroll = currentScroll;
+      });
+    </script>
+  </body>
+</html>
