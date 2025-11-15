@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ReelCreator - Landing Page Concepts</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+      }
+
+      .container {
+        max-width: 800px;
+        width: 100%;
+        text-align: center;
+      }
+
+      h1 {
+        color: white;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+      }
+
+      p {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1.125rem;
+        margin-bottom: 3rem;
+      }
+
+      .concepts {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .concept-card {
+        background: white;
+        border-radius: 16px;
+        padding: 2rem;
+        text-decoration: none;
+        color: #333;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .concept-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+      }
+
+      .concept-card h2 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        color: #333;
+      }
+
+      .concept-card p {
+        color: #666;
+        font-size: 0.9375rem;
+        margin-bottom: 1rem;
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        background: #667eea;
+        color: white;
+        border-radius: 20px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        margin-top: 1rem;
+      }
+
+      @media (max-width: 640px) {
+        h1 {
+          font-size: 2rem;
+        }
+
+        .concepts {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>ReelCreator</h1>
+      <p>Choose a landing page concept to view</p>
+      <div class="concepts">
+        <a href="concept1-minimalist.html" class="concept-card">
+          <h2>Concept 1</h2>
+          <p>Minimalist & Neutral Design</p>
+          <span class="badge">View Concept</span>
+        </a>
+        <a href="concept2-tiktok.html" class="concept-card">
+          <h2>Concept 2</h2>
+          <p>TikTok-style & Feminine Design</p>
+          <span class="badge">View Concept</span>
+        </a>
+      </div>
+    </div>
+  </body>
+</html>
+
