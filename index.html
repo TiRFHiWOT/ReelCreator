@@ -28,7 +28,8 @@
         justify-content: center;
         padding: 2rem;
         position: relative;
-        overflow: hidden;
+        overflow-x: hidden;
+        overflow-y: auto;
       }
 
       body::before {
@@ -296,6 +297,12 @@
       }
 
       @media (max-width: 768px) {
+        body {
+          align-items: flex-start;
+          padding-top: 3rem;
+          padding-bottom: 3rem;
+        }
+
         h1 {
           font-size: 2.5rem;
         }
@@ -321,6 +328,8 @@
       @media (max-width: 480px) {
         body {
           padding: 1.5rem;
+          padding-top: 2rem;
+          padding-bottom: 2rem;
         }
 
         h1 {
@@ -334,6 +343,10 @@
         .logo-icon {
           width: 40px;
           height: 40px;
+        }
+
+        .container {
+          min-height: auto;
         }
       }
     </style>
