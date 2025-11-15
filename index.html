@@ -20,6 +20,7 @@
 
       html {
         min-height: 100vh;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       }
 
       body {
@@ -28,9 +29,9 @@
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         min-height: 100vh;
         display: flex;
-        align-items: flex-start;
+        align-items: center;
         justify-content: center;
-        padding: 3rem 2rem 2rem;
+        padding: 2rem;
         position: relative;
         overflow-x: hidden;
         overflow-y: auto;
@@ -84,8 +85,8 @@
         text-align: center;
         position: relative;
         z-index: 1;
-        margin: 0 auto;
-        padding-bottom: 2rem;
+        margin: auto;
+        padding: 1rem 0;
       }
 
       .logo {
@@ -304,7 +305,12 @@
 
       @media (max-width: 768px) {
         body {
-          padding: 2rem 1.5rem 1.5rem;
+          align-items: flex-start;
+          padding-top: 2rem;
+        }
+
+        .container {
+          padding-top: 0;
         }
 
         h1 {
@@ -331,7 +337,7 @@
 
       @media (max-width: 480px) {
         body {
-          padding: 1.5rem 1rem 1rem;
+          padding: 1.5rem 1rem;
         }
 
         h1 {
