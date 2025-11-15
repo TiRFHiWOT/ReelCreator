@@ -18,17 +18,22 @@
         box-sizing: border-box;
       }
 
+      html {
+        min-height: 100vh;
+      }
+
       body {
         font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
           Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         min-height: 100vh;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: center;
-        padding: 2rem;
+        padding: 3rem 2rem 2rem;
         position: relative;
-        overflow: hidden;
+        overflow-x: hidden;
+        overflow-y: auto;
       }
 
       body::before {
@@ -79,6 +84,8 @@
         text-align: center;
         position: relative;
         z-index: 1;
+        margin: 0 auto;
+        padding-bottom: 2rem;
       }
 
       .logo {
@@ -296,6 +303,10 @@
       }
 
       @media (max-width: 768px) {
+        body {
+          padding: 2rem 1.5rem 1.5rem;
+        }
+
         h1 {
           font-size: 2.5rem;
         }
@@ -320,7 +331,7 @@
 
       @media (max-width: 480px) {
         body {
-          padding: 1.5rem;
+          padding: 1.5rem 1rem 1rem;
         }
 
         h1 {
